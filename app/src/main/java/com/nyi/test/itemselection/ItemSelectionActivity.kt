@@ -36,6 +36,13 @@ class ItemSelectionActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
     }
 
+    /*
+    @NonNull String selectionId,
+                @NonNull RecyclerView recyclerView,
+                @NonNull ItemKeyProvider<K> keyProvider,
+                @NonNull ItemDetailsLookup<K> detailsLookup,
+                @NonNull StorageStrategy<K> storage)
+     */
     private fun setupTracker() {
         tracker = SelectionTracker.Builder<Long>(
             "mySelection",

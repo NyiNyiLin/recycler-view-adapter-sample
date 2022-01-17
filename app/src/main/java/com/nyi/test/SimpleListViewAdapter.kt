@@ -15,6 +15,19 @@ import com.nyi.test.model.Movie
 class SimpleListViewAdapter(
     private val onItemClick: (data: String) ->Unit
 ) : ListAdapter<String, SimpleListViewAdapter.SimpleListViewHolder>(
+    object : DiffUtil.ItemCallback<String>() {
+        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+           return oldItem == newItem
+        }
+
+    }
+) {
+
+    /*
     diffCallBackWith(
         areItemTheSame = { item1, item2 ->
             item1 == item2
@@ -23,7 +36,7 @@ class SimpleListViewAdapter(
             item1 == item2
         }
     )
-) {
+     */
 
     private val onTextViewTextClicked = { position: Int ->
         onItemClick.invoke(getItem(position))

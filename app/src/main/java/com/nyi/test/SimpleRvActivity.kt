@@ -30,7 +30,7 @@ class SimpleRvActivity : AppCompatActivity() {
             "Matrix", "Harry Potter", "Lord of the Ring", "GOT", "Big Bang", "Silicon Valley", "Start Up",
         )
 
-        // recycler adapter
+        /*// recycler adapter
         val simpleRecyclerAdapter = SimpleRecyclerViewAdapter()
 
         binding.rvAnimal.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
@@ -40,10 +40,9 @@ class SimpleRvActivity : AppCompatActivity() {
 
         binding.btnReload.setOnClickListener {
             simpleRecyclerAdapter.addData(data)
-        }
+        }*/
 
 
-/*
         // list adapter
         val listAdapter = SimpleListViewAdapter(onItemClick = { data ->
             Toast.makeText(this, data, Toast.LENGTH_SHORT).show()
@@ -56,6 +55,6 @@ class SimpleRvActivity : AppCompatActivity() {
 
         binding.btnReload.setOnClickListener {
             listAdapter.submitList(data)
-        }*/
+        }
     }
 }
