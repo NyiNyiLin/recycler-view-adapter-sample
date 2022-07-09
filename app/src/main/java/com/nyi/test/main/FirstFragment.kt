@@ -1,11 +1,17 @@
 package com.nyi.test.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.mediarouter.app.MediaRouteChooserDialog
+import androidx.mediarouter.media.MediaControlIntent
+import androidx.mediarouter.media.MediaRouteSelector
+import androidx.mediarouter.media.MediaRouter
+import androidx.mediarouter.media.MediaRouterParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nyi.test.SimpleListViewAdapter
@@ -84,6 +90,32 @@ class FirstFragment : Fragment() {
         val pool = RecyclerView.RecycledViewPool()
         binding.rvAnimal.setRecycledViewPool(pool)
 
+        showOutputSelector()
+    }
+
+    private class MediaRouterCallback : MediaRouter.Callback() {
+        override fun onRouteSelected(
+            router: MediaRouter,
+            route: MediaRouter.RouteInfo,
+            reason: Int
+        ) {
+            if (reason == MediaRouter.UNSELECT_REASON_ROUTE_CHANGED) {
+                Log.d("Test","Unselected because route changed, continue playback")
+            } else if (reason == MediaRouter.UNSELECT_REASON_STOPPED) {
+                Log.d("Test", "Unselected because route was stopped, stop playback")
+            }
+        }
+    }
+    private fun showOutputSelector() {
+        val router = MediaRouter.getInstance(requireContext())
+        val routeSelector = MediaRouteSelector.Builder() // Add control categories that this media app is interested in.
+            .addControlCategory(MediaControlIntent.CATEGORY_LIVE_VIDEO)
+            .build()
+        router.routerParams = MediaRouterParams.Builder().setTransferToLocalEnabled(true).build()
+        router.addCallback(routeSelector, MediaRouterCallback(),
+            MediaRouter.CALLBACK_FLAG_REQUEST_DISCOVERY);
+
+        binding.btnMediaRoute.routeSelector = routeSelector
     }
 
     override fun onDestroyView() {

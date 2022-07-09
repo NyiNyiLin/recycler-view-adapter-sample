@@ -7,4 +7,13 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+
+    <!-- This ActionProvider is configured to  -->
+    <item
+        android:id="@+id/menu_media_route"
+        android:orderInCategory="10"
+        android:title="@string/menu_present_to"
+        app:actionProviderClass="androidx.mediarouter.app.MediaRouteActionProvider"
+        app:showAsAction="never"
+        tools:ignore="AppCompatResource" />
 </menu>

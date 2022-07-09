@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.nyi.test.itemselectioncustom.IntModel
 
 class SimpleRecyclerViewAdapter : RecyclerView.Adapter<SimpleRecyclerViewAdapter.SimpleRvViewHolder>() {
 
@@ -26,7 +27,7 @@ class SimpleRecyclerViewAdapter : RecyclerView.Adapter<SimpleRecyclerViewAdapter
         return SimpleRvViewHolder(itemView)
     }
 
-    fun addData(data : List<String>) {
+    /*fun addData(data : List<IntModel>) {
         this.data = data
         val oldList = this.data
         val newList = data
@@ -50,7 +51,7 @@ class SimpleRecyclerViewAdapter : RecyclerView.Adapter<SimpleRecyclerViewAdapter
                 return
             }
         }
-    }
+    }*/
 
     class SimpleRvViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

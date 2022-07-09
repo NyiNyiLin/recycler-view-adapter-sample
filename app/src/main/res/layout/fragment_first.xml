@@ -20,6 +20,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Reload"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.mediarouter.app.MediaRouteButton
+        android:id="@+id/btn_media_route"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Media Route Button"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

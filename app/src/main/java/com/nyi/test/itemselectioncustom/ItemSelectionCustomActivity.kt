@@ -43,7 +43,7 @@ class ItemSelectionCustomActivity : AppCompatActivity() {
     }
 
     private fun onClickItem(clickedItem : IntModel) {
-        dataList = adapter.currentList.map {
+        dataList = dataList.map {
             if(it.value == clickedItem.value) it.copy(isSelected = clickedItem.isSelected.not())
             else it
         }

@@ -29,8 +29,8 @@ class SimpleRvActivity : AppCompatActivity() {
         val data2 = listOf(
             "Matrix", "Harry Potter", "Lord of the Ring", "GOT", "Big Bang", "Silicon Valley", "Start Up",
         )
-
-        /*// recycler adapter
+/*
+        // recycler adapter
         val simpleRecyclerAdapter = SimpleRecyclerViewAdapter()
 
         binding.rvAnimal.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)

@@ -27,25 +27,6 @@ class SimpleListViewAdapter(
     }
 ) {
 
-    /*
-    diffCallBackWith(
-        areItemTheSame = { item1, item2 ->
-            item1 == item2
-        },
-        areContentsTheSame = { item1, item2 ->
-            item1 == item2
-        }
-    )
-     */
-
-    private val onTextViewTextClicked = { position: Int ->
-        onItemClick.invoke(getItem(position))
-    }
-
-    override fun getItemId(position: Int): Long {
-        return super.getItemId(position)
-    }
-
     override fun onBindViewHolder(holder: SimpleListViewHolder, position: Int) {
         Log.d("Test", "LV Change Position $position")
         holder.onBind(getItem(position))
@@ -54,23 +35,25 @@ class SimpleListViewAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimpleListViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_list_view, parent, false)
 
-        return SimpleListViewHolder(itemView, onTextViewTextClicked)
+        return SimpleListViewHolder(itemView, onItemClick)
     }
 
     class SimpleListViewHolder(
         itemView: View,
-        private val onTextViewClicked: (position: Int) ->Unit
+        private val onTextViewClicked: (text: String) ->Unit
     ) : RecyclerView.ViewHolder(itemView) {
 
         private val textView = itemView.findViewById<TextView>(R.id.tv_name)
+        private lateinit var dataItem : String
 
         init {
             textView.setOnClickListener {
-                onTextViewClicked.invoke(adapterPosition)
+                onTextViewClicked.invoke(dataItem)
             }
         }
 
         fun onBind(dataItem : String) {
+            this.dataItem = dataItem
             textView.text = dataItem
         }
     }
@@ -94,3 +77,13 @@ inline fun <T> diffCallBackWith(
         }
     }
 }
+/*
+    diffCallBackWith(
+        areItemTheSame = { item1, item2 ->
+            item1 == item2
+        },
+        areContentsTheSame = { item1, item2 ->
+            item1 == item2
+        }
+    )
+     */
